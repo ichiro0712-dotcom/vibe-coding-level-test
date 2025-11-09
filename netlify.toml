@@ -1,0 +1,16 @@
+[build]
+  command = "echo 'No build required'"
+  publish = "."
+  functions = "netlify/functions"
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+  force = false
+
+[dev]
+  command = ""
+  port = 8888
+  publish = "."
+  functions = "netlify/functions"

@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>質問管理 - バイブコーディング レベル診断</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header>
+    <div class="container">
+      <a href="index.html" class="logo">Vibe Coding Test</a>
+      <nav>
+        <a href="index.html">ホーム</a>
+        <a href="admin.html">管理画面</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <div class="container">
+      <h1>質問管理</h1>
+
+      <div class="card">
+        <p style="color: var(--gray-light); line-height: 1.8;">
+          このページでは、診断テストの質問を管理できます。<br>
+          質問の追加・編集・削除、重み付けの変更、スコア範囲の調整が可能です。<br>
+          <strong style="color: var(--yellow-primary);">※ 変更を保存するには、ページ下部の「変更を保存」ボタンをクリックしてください。</strong>
+        </p>
+      </div>
+
+      <!-- Phase 1 Questions -->
+      <div class="card">
+        <h2 style="color: var(--yellow-primary);">第1フェーズ: 初期スクリーニング質問</h2>
+        <p style="color: var(--gray-light); margin-bottom: 2rem;">
+          大まかなレベル帯を判定するための5つの質問
+        </p>
+
+        <div id="phase1Questions">
+          <!-- Phase 1 questions will be loaded here -->
+        </div>
+
+        <button class="btn btn-secondary mt-2" onclick="addPhase1Question()">
+          + 質問を追加
+        </button>
+
+        <h3 style="color: var(--yellow-primary); margin-top: 3rem; margin-bottom: 1rem;">スコア範囲設定</h3>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem;">
+          <div>
+            <label style="display: block; color: var(--gray-light); margin-bottom: 0.5rem;">初級ルート</label>
+            <div style="display: flex; gap: 0.5rem; align-items: center;">
+              <input type="number" id="phase1_beginner_min" style="flex: 1;" placeholder="最小">
+              <span style="color: var(--gray-light);">〜</span>
+              <input type="number" id="phase1_beginner_max" style="flex: 1;" placeholder="最大">
+            </div>
+          </div>
+          <div>
+            <label style="display: block; color: var(--gray-light); margin-bottom: 0.5rem;">中級ルート</label>
+            <div style="display: flex; gap: 0.5rem; align-items: center;">
+              <input type="number" id="phase1_intermediate_min" style="flex: 1;" placeholder="最小">
+              <span style="color: var(--gray-light);">〜</span>
+              <input type="number" id="phase1_intermediate_max" style="flex: 1;" placeholder="最大">
+            </div>
+          </div>
+          <div>
+            <label style="display: block; color: var(--gray-light); margin-bottom: 0.5rem;">上級ルート</label>
+            <div style="display: flex; gap: 0.5rem; align-items: center;">
+              <input type="number" id="phase1_advanced_min" style="flex: 1;" placeholder="最小">
+              <span style="color: var(--gray-light);">〜</span>
+              <input type="number" id="phase1_advanced_max" style="flex: 1;" placeholder="最大">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Phase 2 Beginner Questions -->
+      <div class="card">
+        <h2 style="color: var(--yellow-primary);">第2フェーズ: 初級ルート（V0-V3）</h2>
+        <div id="phase2BeginnerQuestions">
+          <!-- Beginner questions will be loaded here -->
+        </div>
+        <button class="btn btn-secondary mt-2" onclick="addPhase2Question('beginner')">
+          + 質問を追加
+        </button>
+
+        <h3 style="color: var(--yellow-primary); margin-top: 3rem; margin-bottom: 1rem;">レベル判定スコア範囲</h3>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem;">
+          <div>
+            <label style="display: block; color: var(--gray-light); margin-bottom: 0.5rem;">V0</label>
+            <div style="display: flex; gap: 0.5rem; align-items: center;">
+              <input type="number" id="beginner_V0_min" style="flex: 1;">
+              <span style="color: var(--gray-light);">〜</span>
+              <input type="number" id="beginner_V0_max" style="flex: 1;">
+            </div>
+          </div>
+          <div>
+            <label style="display: block; color: var(--gray-light); margin-bottom: 0.5rem;">V1</label>
+            <div style="display: flex; gap: 0.5rem; align-items: center;">
+              <input type="number" id="beginner_V1_min" style="flex: 1;">
+              <span style="color: var(--gray-light);">〜</span>
+              <input type="number" id="beginner_V1_max" style="flex: 1;">
+            </div>
+          </div>
+          <div>
+            <label style="display: block; color: var(--gray-light); margin-bottom: 0.5rem;">V2</label>
+            <div style="display: flex; gap: 0.5rem; align-items: center;">
+              <input type="number" id="beginner_V2_min" style="flex: 1;">
+              <span style="color: var(--gray-light);">〜</span>
+              <input type="number" id="beginner_V2_max" style="flex: 1;">
+            </div>
+          </div>
+          <div>
+            <label style="display: block; color: var(--gray-light); margin-bottom: 0.5rem;">V3</label>
+            <div style="display: flex; gap: 0.5rem; align-items: center;">
+              <input type="number" id="beginner_V3_min" style="flex: 1;">
+              <span style="color: var(--gray-light);">〜</span>
+              <input type="number" id="beginner_V3_max" style="flex: 1;">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Phase 2 Intermediate Questions -->
+      <div class="card">
+        <h2 style="color: var(--yellow-primary);">第2フェーズ: 中級ルート（V4-V6）</h2>
+        <div id="phase2IntermediateQuestions">
+          <!-- Intermediate questions will be loaded here -->
+        </div>
+        <button class="btn btn-secondary mt-2" onclick="addPhase2Question('intermediate')">
+          + 質問を追加
+        </button>
+
+        <h3 style="color: var(--yellow-primary); margin-top: 3rem; margin-bottom: 1rem;">レベル判定スコア範囲</h3>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem;">
+          <div>
+            <label style="display: block; color: var(--gray-light); margin-bottom: 0.5rem;">V4</label>
+            <div style="display: flex; gap: 0.5rem; align-items: center;">
+              <input type="number" id="intermediate_V4_min" style="flex: 1;">
+              <span style="color: var(--gray-light);">〜</span>
+              <input type="number" id="intermediate_V4_max" style="flex: 1;">
+            </div>
+          </div>
+          <div>
+            <label style="display: block; color: var(--gray-light); margin-bottom: 0.5rem;">V5</label>
+            <div style="display: flex; gap: 0.5rem; align-items: center;">
+              <input type="number" id="intermediate_V5_min" style="flex: 1;">
+              <span style="color: var(--gray-light);">〜</span>
+              <input type="number" id="intermediate_V5_max" style="flex: 1;">
+            </div>
+          </div>
+          <div>
+            <label style="display: block; color: var(--gray-light); margin-bottom: 0.5rem;">V6</label>
+            <div style="display: flex; gap: 0.5rem; align-items: center;">
+              <input type="number" id="intermediate_V6_min" style="flex: 1;">
+              <span style="color: var(--gray-light);">〜</span>
+              <input type="number" id="intermediate_V6_max" style="flex: 1;">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Phase 2 Advanced Questions -->
+      <div class="card">
+        <h2 style="color: var(--yellow-primary);">第2フェーズ: 上級ルート（V7-V9）</h2>
+        <div id="phase2AdvancedQuestions">
+          <!-- Advanced questions will be loaded here -->
+        </div>
+        <button class="btn btn-secondary mt-2" onclick="addPhase2Question('advanced')">
+          + 質問を追加
+        </button>
+
+        <h3 style="color: var(--yellow-primary); margin-top: 3rem; margin-bottom: 1rem;">レベル判定スコア範囲</h3>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem;">
+          <div>
+            <label style="display: block; color: var(--gray-light); margin-bottom: 0.5rem;">V7</label>
+            <div style="display: flex; gap: 0.5rem; align-items: center;">
+              <input type="number" id="advanced_V7_min" style="flex: 1;">
+              <span style="color: var(--gray-light);">〜</span>
+              <input type="number" id="advanced_V7_max" style="flex: 1;">
+            </div>
+          </div>
+          <div>
+            <label style="display: block; color: var(--gray-light); margin-bottom: 0.5rem;">V8</label>
+            <div style="display: flex; gap: 0.5rem; align-items: center;">
+              <input type="number" id="advanced_V8_min" style="flex: 1;">
+              <span style="color: var(--gray-light);">〜</span>
+              <input type="number" id="advanced_V8_max" style="flex: 1;">
+            </div>
+          </div>
+          <div>
+            <label style="display: block; color: var(--gray-light); margin-bottom: 0.5rem;">V9</label>
+            <div style="display: flex; gap: 0.5rem; align-items: center;">
+              <input type="number" id="advanced_V9_min" style="flex: 1;">
+              <span style="color: var(--gray-light);">〜</span>
+              <input type="number" id="advanced_V9_max" style="flex: 1;">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Save Button -->
+      <div class="text-center mt-3 mb-3">
+        <button class="btn btn-primary" onclick="saveQuestions()" style="font-size: 1.2rem; padding: 1.5rem 3rem;">
+          変更を保存
+        </button>
+        <button class="btn btn-secondary" onclick="resetQuestions()" style="font-size: 1.2rem; padding: 1.5rem 3rem; margin-left: 1rem;">
+          リセット
+        </button>
+      </div>
+
+      <div class="card">
+        <h3 style="color: var(--yellow-primary); margin-bottom: 1rem;">注意事項</h3>
+        <ul style="color: var(--gray-light); line-height: 1.8; padding-left: 1.5rem;">
+          <li>質問の変更は、LocalStorageに保存されます（ブラウザ単位）</li>
+          <li>重み付けは0.1〜3.0の範囲で設定してください（デフォルト: 1.0）</li>
+          <li>スコア範囲は重複しないように設定してください</li>
+          <li>「リセット」を押すと、デフォルトの質問データに戻ります</li>
+          <li>本番環境では、サーバー側でデータを管理することを推奨します</li>
+        </ul>
+      </div>
+    </div>
+  </main>
+
+  <footer style="text-align: center; padding: 3rem 0; color: var(--gray-dark); margin-top: 5rem; border-top: 1px solid var(--gray-dark);">
+    <p>&copy; 2024 Vibe Coding Level Test</p>
+  </footer>
+
+  <script src="js/admin.js"></script>
+</body>
+</html>

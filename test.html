@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>診断テスト - バイブコーディング レベル診断</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header>
+    <div class="container">
+      <a href="index.html" class="logo">Vibe Coding Test</a>
+      <nav>
+        <a href="index.html">ホーム</a>
+        <a href="admin.html">管理画面</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <div class="container-narrow">
+      <!-- Progress Bar -->
+      <div class="progress-container">
+        <div class="progress-bar" id="progressBar" style="width: 0%;">
+          <span id="progressText">0%</span>
+        </div>
+      </div>
+
+      <!-- Phase Indicator -->
+      <div class="text-center mb-2">
+        <h2 id="phaseTitle">第1フェーズ: 初期スクリーニング</h2>
+        <p id="phaseDescription" style="color: var(--gray-light);">あなたの大まかなレベル帯を判定します</p>
+        <p id="questionCounter" style="color: var(--yellow-primary); font-size: 1.2rem; font-weight: 700;">
+          質問 <span id="currentQuestion">1</span> / <span id="totalQuestions">5</span>
+        </p>
+      </div>
+
+      <!-- Question Container -->
+      <div id="questionContainer" class="question-container fade-in">
+        <!-- Questions will be dynamically inserted here -->
+      </div>
+
+      <!-- Navigation Buttons -->
+      <div style="display: flex; justify-content: space-between; margin-top: 2rem;">
+        <button id="prevBtn" class="btn btn-secondary" onclick="previousQuestion()" style="display: none;">
+          前へ
+        </button>
+        <button id="nextBtn" class="btn btn-primary" onclick="nextQuestion()" disabled>
+          次へ
+        </button>
+      </div>
+
+      <!-- Phase Transition Message -->
+      <div id="transitionMessage" class="card card-highlight text-center" style="display: none;">
+        <h2 style="color: var(--yellow-primary);">第1フェーズ完了！</h2>
+        <p style="font-size: 1.2rem; margin: 1.5rem 0;">
+          あなたは <strong id="routeName" style="color: var(--yellow-primary);"></strong> に振り分けられました。
+        </p>
+        <p style="color: var(--gray-light);">
+          第2フェーズでは、あなたのレベル帯に特化した質問を行います。
+        </p>
+        <button class="btn btn-primary mt-2" onclick="startPhase2()">
+          第2フェーズへ進む
+        </button>
+      </div>
+    </div>
+  </main>
+
+  <script src="js/test.js"></script>
+</body>
+</html>

@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>診断結果 - バイブコーディング レベル診断</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header>
+    <div class="container">
+      <a href="index.html" class="logo">Vibe Coding Test</a>
+      <nav>
+        <a href="index.html">ホーム</a>
+        <a href="admin.html">管理画面</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <div class="container-narrow">
+      <div class="text-center">
+        <h1 class="fade-in">診断結果</h1>
+
+        <!-- Loading State -->
+        <div id="loadingState" class="loading">
+          <div class="spinner"></div>
+        </div>
+
+        <!-- Result Content -->
+        <div id="resultContent" style="display: none;">
+          <!-- Level Badge -->
+          <div class="fade-in">
+            <div class="level-badge" id="levelBadge"></div>
+            <h2 id="levelName" style="color: var(--white); margin-top: 1rem;"></h2>
+          </div>
+
+          <!-- Level Description -->
+          <div class="level-description fade-in">
+            <p id="levelDescription" style="font-size: 1.1rem;"></p>
+          </div>
+
+          <!-- Score Details -->
+          <div class="card mt-3 fade-in">
+            <h3 style="color: var(--yellow-primary); margin-bottom: 1.5rem;">スコア詳細</h3>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; text-align: left;">
+              <div>
+                <p style="color: var(--gray-light); font-size: 0.9rem; margin-bottom: 0.5rem;">第1フェーズ</p>
+                <p style="font-size: 1.5rem; font-weight: 700; color: var(--yellow-primary);">
+                  <span id="phase1Score"></span> <span style="font-size: 1rem; color: var(--gray-dark);">/ 15</span>
+                </p>
+              </div>
+              <div>
+                <p style="color: var(--gray-light); font-size: 0.9rem; margin-bottom: 0.5rem;">第2フェーズ</p>
+                <p style="font-size: 1.5rem; font-weight: 700; color: var(--yellow-primary);">
+                  <span id="phase2Score"></span> <span style="font-size: 1rem; color: var(--gray-dark);">/ 45</span>
+                </p>
+              </div>
+              <div>
+                <p style="color: var(--gray-light); font-size: 0.9rem; margin-bottom: 0.5rem;">振り分けルート</p>
+                <p style="font-size: 1.2rem; font-weight: 700; color: var(--white);" id="routeName"></p>
+              </div>
+            </div>
+          </div>
+
+          <!-- AI Advice -->
+          <div class="ai-advice fade-in" id="aiAdviceSection">
+            <div class="ai-advice-header">
+              <h3 style="color: var(--yellow-primary); margin: 0;">AIからのアドバイス</h3>
+            </div>
+            <div id="aiAdviceContent" class="ai-advice-content">
+              <div class="loading">
+                <div class="spinner"></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Next Steps -->
+          <div class="card mt-3 fade-in">
+            <h3 style="color: var(--yellow-primary); margin-bottom: 1.5rem;">次のステップ</h3>
+            <div id="nextSteps" style="text-align: left; color: var(--gray-light); line-height: 1.8;">
+              <!-- Will be populated dynamically -->
+            </div>
+          </div>
+
+          <!-- Action Buttons -->
+          <div class="mt-3 text-center">
+            <a href="test.html" class="btn btn-primary" style="margin-right: 1rem;">
+              もう一度診断する
+            </a>
+            <a href="index.html" class="btn btn-secondary">
+              ホームに戻る
+            </a>
+          </div>
+
+          <!-- Share Section -->
+          <div class="card mt-3">
+            <h3 style="color: var(--yellow-primary); margin-bottom: 1rem;">結果をシェア</h3>
+            <p style="color: var(--gray-light); margin-bottom: 1.5rem;">
+              あなたのレベルは <strong style="color: var(--yellow-primary);" id="shareLevel"></strong> でした！
+            </p>
+            <button class="btn btn-secondary" onclick="copyResultToClipboard()">
+              結果をコピー
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer style="text-align: center; padding: 3rem 0; color: var(--gray-dark); margin-top: 5rem; border-top: 1px solid var(--gray-dark);">
+    <p>&copy; 2024 Vibe Coding Level Test</p>
+  </footer>
+
+  <script src="js/result.js"></script>
+</body>
+</html>

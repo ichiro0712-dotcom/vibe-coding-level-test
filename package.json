@@ -1,0 +1,25 @@
+{
+  "name": "vibe-coding-level-test",
+  "version": "1.0.0",
+  "description": "バイブコーディング レベル診断サイト",
+  "main": "index.js",
+  "scripts": {
+    "dev": "netlify dev",
+    "build": "echo 'No build required for static site'",
+    "deploy": "netlify deploy --prod"
+  },
+  "keywords": [
+    "ai",
+    "coding",
+    "assessment",
+    "vibe-coding"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "@google/generative-ai": "^0.21.0"
+  },
+  "devDependencies": {
+    "netlify-cli": "^17.0.0"
+  }
+}
